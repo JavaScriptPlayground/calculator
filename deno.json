@@ -110,8 +110,8 @@
     }
   },
   "imports": {
-    "@esbuild": "npm:esbuild",
-    "@esbuild-plugin-solid": "npm:esbuild-plugin-solid",
+    "@esbuild": "npm:esbuild@^0.25.11",
+    "@esbuild-plugin-solid": "npm:esbuild-plugin-solid@^0.6.0",
     "@solid-js": "https://esm.sh/solid-js@1.9.9",
     "@solid-js/jsx-runtime": "https://esm.sh/solid-js@1.9.9/jsx-runtime",
     "@solid-js/web": "https://esm.sh/solid-js@1.9.9/web",
