@@ -51,9 +51,6 @@
       "dependencies": [ "clear-reports" ]
     }
   },
-  "unstable": [
-    "bundle"
-  ],
   "compilerOptions": {
     "module": "esnext",
     "lib": [
