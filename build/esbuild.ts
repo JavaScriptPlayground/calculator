@@ -13,7 +13,7 @@ const args = parseArgs<{
 }>(Deno.args);
 
 // convert array to esbuild copy loader object
-const loaders = [
+const loaders : { [ext: string]: esbuild.Loader } = [
   ".html",
   ".css",
   ".svg",
@@ -23,10 +23,10 @@ const loaders = [
   ".ico"
 ].reduce((
   previousExtension,
-  extension
+  currentExtension
 ) => ({
   ...previousExtension,
-  [extension]: 'copy' as esbuild.Loader
+  [currentExtension]: 'copy'
 }), {})
 
 const copyConfig : esbuild.BuildOptions = {
@@ -55,7 +55,6 @@ const filesConfig : esbuild.BuildOptions = {
   target: 'esnext',
   sourcemap: args.develop ? 'linked' : false,
   sourcesContent: true,
-  tsconfig: './deno.json',
   outdir: './dist',
   outbase: './src/client',
   entryPoints: [

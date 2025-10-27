@@ -61,8 +61,8 @@
       "dom",
       "webworker"
     ],
-    "jsx": "react-jsx",
-    "jsxImportSource": "npm:solid-js"
+    "jsx": "preserve",
+    "jsxImportSource": "@solid-js"
   },
   "exclude": [
     "./dist/"
@@ -113,6 +113,7 @@
     "@esbuild": "npm:esbuild",
     "@esbuild-plugin-solid": "npm:esbuild-plugin-solid",
     "@solid-js": "https://esm.sh/solid-js@1.9.9",
+    "@solid-js/jsx-runtime": "https://esm.sh/solid-js@1.9.9/jsx-runtime",
     "@solid-js/web": "https://esm.sh/solid-js@1.9.9/web",
     "@solid-js/router": "https://esm.sh/@solidjs/router@0.15.3",
     "@std/cli/parse-args": "jsr:@std/cli@^1.0.6/parse-args",

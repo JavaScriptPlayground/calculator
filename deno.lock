@@ -624,14 +624,36 @@
       "integrity": "sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g=="
     }
   },
+  "redirects": {
+    "https://esm.sh/seroval-plugins@~1.3.0/web?target=denonext": "https://esm.sh/seroval-plugins@1.3.3/web?target=denonext",
+    "https://esm.sh/seroval@^1.0?target=denonext": "https://esm.sh/seroval@1.3.2?target=denonext",
+    "https://esm.sh/seroval@~1.3.0?target=denonext": "https://esm.sh/seroval@1.3.2?target=denonext",
+    "https://esm.sh/solid-js@^1.8.6/store?target=denonext": "https://esm.sh/solid-js@1.9.9/store?target=denonext",
+    "https://esm.sh/solid-js@^1.8.6/web?target=denonext": "https://esm.sh/solid-js@1.9.9/web?target=denonext",
+    "https://esm.sh/solid-js@^1.8.6?target=denonext": "https://esm.sh/solid-js@1.9.9?target=denonext"
+  },
+  "remote": {
+    "https://esm.sh/@solidjs/router@0.15.3": "4e10bfcf58c19daf7b7955c5e59fe0d0b62c5999b499d22693b66ff0d2f663f6",
+    "https://esm.sh/@solidjs/router@0.15.3/denonext/router.mjs": "74c244802cb30f24c7bd9b0b001b84c0e8ad0aae98e176f1528ab22783c17269",
+    "https://esm.sh/seroval-plugins@1.3.3/denonext/web.mjs": "2f55c65499a3a90271df418a498c077d6d000974c582953681b520e47634e379",
+    "https://esm.sh/seroval-plugins@1.3.3/web?target=denonext": "cbd140231f24c4b0c760e5f44b8410348660690f9b9e08d66378a790c80ed0ff",
+    "https://esm.sh/seroval@1.3.2/denonext/seroval.mjs": "d9d004bc19bd020870d312ca4eab99f649e16981d0418eedff94897a3297d930",
+    "https://esm.sh/seroval@1.3.2?target=denonext": "42a256e27ebc299bb58978c66753fb6631b1e07bc3ee052388f504f4d38895b4",
+    "https://esm.sh/solid-js@1.9.9/denonext/solid-js.mjs": "5929b0380d0f9aec1a9e76ee52e4be6193281d1d23e5d18efde19327c838d9cd",
+    "https://esm.sh/solid-js@1.9.9/denonext/store.mjs": "5797b61143c4ba2682c6916c287a80059036aef307c8b34f1090bb3da04c0cf4",
+    "https://esm.sh/solid-js@1.9.9/denonext/web.mjs": "331bef8c16cd76e42ff268cfd39813c15e349a8bc881017dbca2f2024fe6973a",
+    "https://esm.sh/solid-js@1.9.9/store?target=denonext": "12f703920adae37fddb9ff5feeae244571211f121ca11f8526738061a8ed4abb",
+    "https://esm.sh/solid-js@1.9.9/web": "229f0f1a317a1e729d9726f3285dfa0a008d4dc02d26505f220c5069d79fceb6",
+    "https://esm.sh/solid-js@1.9.9/web?target=denonext": "229f0f1a317a1e729d9726f3285dfa0a008d4dc02d26505f220c5069d79fceb6",
+    "https://esm.sh/solid-js@1.9.9?target=denonext": "194dd892b8c079d18a46841e1bbb78143cb2f9dd0e10bb22283d611ee89d6b7a"
+  },
   "workspace": {
     "dependencies": [
       "jsr:@std/cli@^1.0.6",
       "jsr:@std/fmt@^1.0.2",
       "jsr:@std/http@^1.0.6",
       "npm:esbuild-plugin-solid@*",
-      "npm:esbuild@*",
-      "npm:solid-js@*"
+      "npm:esbuild@*"
     ]
   }
 }
