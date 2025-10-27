@@ -7,29 +7,24 @@
       "description": "Install all dependencies specified in the \"deno.lock\" file.",
       "command": "deno install"
     },
-    "build-deno": {
-      "description": "Build the app for production.",
-      "command": "deno run -A ./config/build/bundle.ts",
-      "dependencies": [ "clear-dist" ]
-    },
     "build": {
       "description": "Build the app for production.",
-      "command": "deno run -A ./config/build/index.ts",
+      "command": "deno run -A ./build/esbuild.ts",
       "dependencies": [ "clear-dist" ]
     },
     "build:watch": {
       "description": "Build the app for production with watcher.",
-      "command": "deno run -A ./config/build/index.ts --watch",
+      "command": "deno run -A ./build/esbuild.ts --watch",
       "dependencies": [ "clear-dist" ]
     },
     "build:dev": {
       "description": "Build the app for development.",
-      "command": "deno run -A ./config/build/index.ts --develop",
+      "command": "deno run -A ./build/esbuild.ts --develop",
       "dependencies": [ "clear-dist" ]
     },
     "build:dev:watch": {
       "description": "Build the app for development with watcher.",
-      "command": "deno run -A ./config/build/index.ts --develop --watch",
+      "command": "deno run -A ./build/esbuild.ts --develop --watch",
       "dependencies": [ "clear-dist" ]
     },
     "cache-reload": {
@@ -44,7 +39,7 @@
     "serve:dev": {
       "description": "Run the server on port 8000 for development.",
       "command": "deno run -A ./src/server/index.ts --develop --port=8000",
-      "dependencies": [ "build" ]
+      "dependencies": [ "build:dev" ]
     },
     "lint": {
       "description": "Run linter.",
