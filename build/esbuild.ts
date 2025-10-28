@@ -1,10 +1,8 @@
 /// <reference lib="deno.ns" />
 import * as esbuild from '@esbuild';
-import { solidPlugin as esbuildPluginSolidJs } from '@esbuild-plugin-solid';
+import { denoPlugin as esbuildPluginDeno } from "@deno/esbuild-plugin";
 import { green } from '@std/fmt/colors';
 import { parseArgs } from '@std/cli/parse-args';
-
-import denoJson from '../deno.json' with {type: 'json'}
 
 const args = parseArgs<{
   watch: boolean | undefined,
@@ -53,6 +51,9 @@ const filesConfig : esbuild.BuildOptions = {
   bundle: true,
   format: 'esm',
   target: 'esnext',
+  platform: 'browser',
+  jsx: 'automatic',
+  jsxImportSource: '@solid-js/h',
   sourcemap: args.develop ? 'linked' : false,
   sourcesContent: true,
   outdir: './dist',
@@ -65,9 +66,11 @@ const filesConfig : esbuild.BuildOptions = {
     'nesting': true
   },
   plugins: [
-    esbuildPluginSolidJs({solid: {moduleName: '@solid-js/web'}})
-  ],
-  alias: denoJson.imports
+    esbuildPluginDeno({
+      preserveJsx: true,
+      debug: args.develop ?? false
+    }),
+  ]
 }
 
 console.log('Build process started.');

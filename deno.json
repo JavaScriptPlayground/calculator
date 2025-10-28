@@ -107,14 +107,11 @@
     }
   },
   "imports": {
+    "@deno/esbuild-plugin": "jsr:@deno/esbuild-plugin@^1.2.0",
     "@esbuild": "npm:esbuild@^0.25.11",
-    "@esbuild-plugin-solid": "npm:esbuild-plugin-solid@^0.6.0",
-    "@solid-js": "https://esm.sh/solid-js@1.9.9",
-    "@solid-js/jsx-runtime": "https://esm.sh/solid-js@1.9.9/jsx-runtime",
-    "@solid-js/web": "https://esm.sh/solid-js@1.9.9/web",
-    "@std/cli/parse-args": "jsr:@std/cli@^1.0.6/parse-args",
-    "@std/http/unstable-route": "jsr:@std/http@^1.0.6/unstable-route",
-    "@std/http/file-server": "jsr:@std/http@^1.0.6/file-server",
-    "@std/fmt/colors": "jsr:@std/fmt@^1.0.2/colors"
+    "@solid-js": "npm:solid-js@1.9.10",
+    "@std/cli": "jsr:@std/cli@^1.0.6",
+    "@std/http": "jsr:@std/http@^1.0.6",
+    "@std/fmt": "jsr:@std/fmt@^1.0.2"
   }
 }
