@@ -1,7 +1,7 @@
 /// <reference lib="deno.ns" />
 import * as esbuild from '@esbuild';
 import { denoPlugin as esbuildPluginDeno } from "@deno/esbuild-plugin";
-import { green } from '@std/fmt/colors';
+import { bold, green, magenta } from '@std/fmt/colors';
 import { parseArgs } from '@std/cli/parse-args';
 
 const args = parseArgs<{
@@ -39,7 +39,7 @@ const copyConfig : esbuild.BuildOptions = {
     './src/client/**/index.css',
     './src/client/**/assets/*',
     './src/client/static/**/*'
-  ]
+  ],
 }
 
 const filesConfig : esbuild.BuildOptions = {
@@ -73,7 +73,7 @@ const filesConfig : esbuild.BuildOptions = {
   ]
 }
 
-console.log('Build process started.');
+console.log(bold(`Build process started. Building and bundling for ${magenta(args.develop ? '[Development]' : '[Production]')}.`));
 
 const timestampNow = Date.now();
 
@@ -83,7 +83,7 @@ if (args.watch) {
 } else {
   Promise.all([
     esbuild.build(copyConfig),
-    esbuild.build(filesConfig),
+    esbuild.build(filesConfig)
   ]).then(() => {
     esbuild.stop();
     console.log(green(`esbuild ${esbuild.version} finished build in ${(Date.now() - timestampNow).toString()}ms.`));
