@@ -3,6 +3,7 @@ import * as esbuild from '@esbuild';
 import { denoPlugin as esbuildPluginDeno } from "@deno/esbuild-plugin";
 import { bold, green, magenta } from '@std/fmt/colors';
 import { parseArgs } from '@std/cli/parse-args';
+import { copy as esbuildPluginCopy } from './plugins/copy.ts';
 
 const args = parseArgs<{
   watch: boolean | undefined,
@@ -10,36 +11,20 @@ const args = parseArgs<{
   logLevel: esbuild.LogLevel
 }>(Deno.args);
 
-// convert array to esbuild copy loader object
-const loaders : { [ext: string]: esbuild.Loader } = [
-  ".html",
-  ".css",
-  ".svg",
-  ".png",
-  ".jpg",
-  ".jpeg",
-  ".ico"
-].reduce((
-  previousExtension,
-  currentExtension
-) => ({
-  ...previousExtension,
-  [currentExtension]: 'copy'
-}), {})
-
 const copyConfig : esbuild.BuildOptions = {
   allowOverwrite: true,
   logLevel: args.logLevel ?? 'info',
   color: true,
-  loader: loaders,
   outdir: './dist',
   outbase: './src/client',
   entryPoints: [
     './src/client/**/index.html',
-    './src/client/**/index.css',
     './src/client/**/assets/*',
     './src/client/static/**/*'
   ],
+  plugins: [
+    esbuildPluginCopy()
+  ]
 }
 
 const filesConfig : esbuild.BuildOptions = {
@@ -59,7 +44,8 @@ const filesConfig : esbuild.BuildOptions = {
   outdir: './dist',
   outbase: './src/client',
   entryPoints: [
-    './src/client/index.tsx'
+    './src/client/index.tsx',
+    './src/client/index.css'
   ],
   supported: {
     'import-attributes': true,
