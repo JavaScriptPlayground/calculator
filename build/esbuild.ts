@@ -4,7 +4,7 @@ import { bold, green, magenta } from '@std/fmt/colors';
 import { parseArgs } from '@std/cli/parse-args';
 import { copy as esbuildPluginCopy } from './plugins/copy.ts';
 import { denoPlugin as esbuildPluginDeno } from "@deno/esbuild-plugin";
-import { htmlScriptTags as esbuildPluginHtmlScriptTags } from './plugins/html_script_tags.ts';
+import { transformScriptTags as esbuildPluginTransformScriptTags } from './plugins/transform_script_tags.ts';
 
 const args = parseArgs<{
   watch: boolean | undefined,
@@ -53,7 +53,7 @@ const buildConfig : esbuild.BuildOptions = {
     'nesting': true
   },
   plugins: [
-    esbuildPluginHtmlScriptTags(),
+    esbuildPluginTransformScriptTags(),
     esbuildPluginDeno({
       preserveJsx: true,
       debug: args.develop ?? false

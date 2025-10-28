@@ -1,7 +1,7 @@
 import type * as esbuild from '@esbuild';
 
 
-export function htmlScriptTags(options?: {
+export function transformScriptTags(options?: {
   pattern?: RegExp,
   replaceExtensionWith?: string
 }) : esbuild.Plugin {
