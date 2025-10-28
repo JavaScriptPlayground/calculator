@@ -1,9 +1,10 @@
 /// <reference lib="deno.ns" />
 import * as esbuild from '@esbuild';
-import { denoPlugin as esbuildPluginDeno } from "@deno/esbuild-plugin";
 import { bold, green, magenta } from '@std/fmt/colors';
 import { parseArgs } from '@std/cli/parse-args';
 import { copy as esbuildPluginCopy } from './plugins/copy.ts';
+import { denoPlugin as esbuildPluginDeno } from "@deno/esbuild-plugin";
+import { htmlScriptTags as esbuildPluginHtmlScriptTags } from './plugins/html_script_tags.ts';
 
 const args = parseArgs<{
   watch: boolean | undefined,
@@ -18,7 +19,6 @@ const copyConfig : esbuild.BuildOptions = {
   outdir: './dist',
   outbase: './src/client',
   entryPoints: [
-    './src/client/**/index.html',
     './src/client/**/assets/*',
     './src/client/static/**/*'
   ],
@@ -27,7 +27,7 @@ const copyConfig : esbuild.BuildOptions = {
   ]
 }
 
-const filesConfig : esbuild.BuildOptions = {
+const buildConfig : esbuild.BuildOptions = {
   allowOverwrite: true,
   logLevel: args.logLevel ?? 'info',
   legalComments: args.develop ? 'inline' : 'none',
@@ -44,6 +44,7 @@ const filesConfig : esbuild.BuildOptions = {
   outdir: './dist',
   outbase: './src/client',
   entryPoints: [
+    './src/client/**/index.html',
     './src/client/index.tsx',
     './src/client/index.css'
   ],
@@ -52,6 +53,7 @@ const filesConfig : esbuild.BuildOptions = {
     'nesting': true
   },
   plugins: [
+    esbuildPluginHtmlScriptTags(),
     esbuildPluginDeno({
       preserveJsx: true,
       debug: args.develop ?? false
@@ -65,11 +67,11 @@ const timestampNow = Date.now();
 
 if (args.watch) {
   esbuild.context(copyConfig).then((context) => context.watch());
-  esbuild.context(filesConfig).then((context) => context.watch());
+  esbuild.context(buildConfig).then((context) => context.watch());
 } else {
   Promise.all([
     esbuild.build(copyConfig),
-    esbuild.build(filesConfig)
+    esbuild.build(buildConfig)
   ]).then(() => {
     esbuild.stop();
     console.log(green(`esbuild ${esbuild.version} finished build in ${(Date.now() - timestampNow).toString()}ms.`));
