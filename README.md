@@ -17,25 +17,26 @@ Template for Frontend development. Build a web page using [SolidJS](https://soli
 - `LICENSE` License file.
 - `README.md` This file.
 - `.github` [GitHub configuration](https://www.freecodecamp.org/news/how-to-use-the-dot-github-repository/) directory.
-- `config` Project specific config files (not part of sourcecode).
-  - `deno.lock` Lock file for all dependencies.
-  - `import_map.json` [Import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) for 
-    all imports.
-  - `build` Build configuration files.
-    - `copy_files_extension_filter.json` JSON array of extensions for files that should be copied to the dist folder.
-    - `index.ts` Build configuration for [esbuild](https://esbuild.github.io). Only change this if you know what you are
-      doing.
-  - `types` Project type declarations.
-    - `...` Declaration.
-- `doc` Documentation for the page.
+
+- `build/` Build configuration files.
+  - `esbuild.ts` Build configuration for [esbuild](https://esbuild.github.io). Only change this if you know what you are
+    doing.
+- `docs/` Documentation for the page.
   - `...` Doc.
-- `src` All sourcecode.
-  - `client` Sourcecode for the client.
-    - `app` The main app.
-    - `components` Generic components for the page.
-    - `static` Static assets for the page.
+- `src/` All sourcecode.
+  - `client/` Sourcecode for the client.
+    - `index.css` The main app CSS.
+    - `index.html` The main app HTML.
+    - `index.tsx` The main app TSX.
+    - `assets/` Assets for the main page.
+    - `pages/` Pages for the main app.
+      - `404/` "Not Found" page.
+      - `home/` "Home" page.
+      - `.../` Pages.
+        - `assets/` Assets for the specific page.
+    - `static/` Static assets for all pages.
     - `...` Client files.
-  - `server` Sourcecode for the server.
+  - `server/` Sourcecode for the server.
     - `...` Server files.
 - `test` Tests (no unit tests).
   - `e_to_e` End to End tests for the page.
